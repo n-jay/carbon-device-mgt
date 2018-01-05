@@ -7,5 +7,7 @@ import java.io.File;
  */
 public interface ImageProcessingDAO {
 
-    boolean saveImages(File image) throws DeviceOrganizationDAOException;
+    boolean setImages(File image) throws DeviceOrganizationDAOException;
+
+    File getImages(String id) throws DeviceOrganizationDAOException;
 }
