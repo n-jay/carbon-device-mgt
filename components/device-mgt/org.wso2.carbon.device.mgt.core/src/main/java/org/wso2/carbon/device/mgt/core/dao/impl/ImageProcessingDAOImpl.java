@@ -23,16 +23,16 @@ public class ImageProcessingDAOImpl implements ImageProcessingDAO{
         Date todaysDate = new Date();
         DateFormat timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String timeStampString = timeStamp.format(todaysDate);
+        FileInputStream imageInputStream;
         try {
             conn = this.getConnection();
             String sql = "INSERT INTO IMAGES(DEVICE_ID, TIME_STAMP, IMAGE ) VALUES (?, ?, ?)";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, deviceId);
-            stmt.setTimestamp(2, Timestamp.valueOf(image.getName()));
-            image = new File(timeStampString);
+            stmt.setString(2, timeStampString);
             try {
-                InputStream inputImage = new FileInputStream(image);
-                stmt.setBlob(3, inputImage);
+                imageInputStream = new FileInputStream(image);
+                stmt.setBinaryStream(3, imageInputStream);
             } catch (FileNotFoundException e) {
                 throw new ImageProcessingDAOException("Error occurred while finding image", e);
             }
@@ -58,7 +58,7 @@ public class ImageProcessingDAOImpl implements ImageProcessingDAO{
             stmt = conn.prepareStatement(sql);
             rs = stmt.executeQuery();
             if (rs.next()) {
-                imageResult = (File) rs.getBlob("IMAGE");
+//                imageResult = (File) rs.getBlob("IMAGE");
             }
         } catch (SQLException e) {
             throw new ImageProcessingDAOException("Error occurred while saving image", e);
