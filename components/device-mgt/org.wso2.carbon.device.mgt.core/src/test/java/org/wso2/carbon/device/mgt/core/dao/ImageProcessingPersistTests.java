@@ -54,6 +54,16 @@ public class ImageProcessingPersistTests extends BaseDeviceManagementTest{
 
     @Test (dependsOnMethods = {"setImagesTest"})
     public void getImagesTest() {
-
+        String output;
+        try {
+            DeviceManagementDAOFactory.beginTransaction();
+            output = imageProcessingDAOimpl.getImages("dev1");
+        } catch (TransactionManagementException e) {
+            e.printStackTrace();
+        } catch (ImageProcessingDAOException e) {
+            e.printStackTrace();
+        } finally {
+            DeviceManagementDAOFactory.closeConnection();
+        }
     }
 }
