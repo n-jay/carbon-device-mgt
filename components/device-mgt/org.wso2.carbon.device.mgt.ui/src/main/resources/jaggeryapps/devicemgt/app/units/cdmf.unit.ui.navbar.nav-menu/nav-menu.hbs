@@ -133,6 +133,14 @@
             </a>
         </li>
     {{/if}}
+    {{#if permissions.IS_ADMIN}}
+        <li>
+            <a href="{{@app.context}}/device-hierarchy">
+                <i class="fw fw-bpel"></i>
+                Device Hierarchy
+            </a>
+        </li>
+    {{/if}}
 
 
 
