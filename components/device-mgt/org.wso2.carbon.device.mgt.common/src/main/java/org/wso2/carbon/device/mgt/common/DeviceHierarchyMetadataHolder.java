@@ -30,36 +30,26 @@ public class DeviceHierarchyMetadataHolder implements Serializable {
             required = true)
     private String deviceId;
 
-    @ApiModelProperty(name = "deviceName", value = "Device name as suggested by the user.",
-            required = false)
-    private String deviceName;
-
-    @ApiModelProperty(name = "parent", value = "Parent of the device as it is located in the organization.",
+    @ApiModelProperty(name = "deviceParent", value = "Parent of the device as it is located in the hierarchy.",
             required = true)
-    private String parent;
+    private String deviceParent;
 
     @ApiModelProperty(name = "pingMins", value = "No. of minutes since device last pinged the server.",
             required = true)
-    private int pingMins;
+    private int isParent;
 
     @ApiModelProperty(name = "state", value = "State of connectivity of the device.",
             required = true)
-    private int state;
-
-    @ApiModelProperty(name = "isGateway", value = "Defines if the device is a Gateway.",
-            required = true)
-    private int isGateway;
+    private int tenantId;
 
     public DeviceHierarchyMetadataHolder() {
     }
 
-    public DeviceHierarchyMetadataHolder(String deviceId, String deviceName, String parent, int pingMins, int state, int isGateway) {
+    public DeviceHierarchyMetadataHolder(String deviceId, String deviceParent, int isParent, int tenantId) {
         this.deviceId = deviceId;
-        this.deviceName = deviceName;
-        this.parent = parent;
-        this.pingMins = pingMins;
-        this.state = state;
-        this.isGateway = isGateway;
+        this.deviceParent = deviceParent;
+        this.isParent = isParent;
+        this.tenantId = tenantId;
     }
 
     public String getDeviceId() {
@@ -70,43 +60,27 @@ public class DeviceHierarchyMetadataHolder implements Serializable {
         this.deviceId = deviceId;
     }
 
-    public String getDeviceName() {
-        return deviceName;
+    public String getDeviceParent() {
+        return deviceParent;
     }
 
-    public void setDeviceName(String deviceName) {
-        this.deviceName = deviceName;
+    public void setDeviceParent(String deviceParent) {
+        this.deviceParent = deviceParent;
     }
 
-    public String getParent() {
-        return parent;
+    public int getIsParent() {
+        return isParent;
     }
 
-    public void setParent(String parent) {
-        this.parent = parent;
+    public void setIsParent(int isParent) {
+        this.isParent = isParent;
     }
 
-    public int getPingMins() {
-        return pingMins;
+    public int getTenantId() {
+        return tenantId;
     }
 
-    public void setPingMins(int pingMins) {
-        this.pingMins = pingMins;
-    }
-
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
-    }
-
-    public int getIsGateway() {
-        return isGateway;
-    }
-
-    public void setIsGateway(int isGateway) {
-        this.isGateway = isGateway;
+    public void setTenantId(int tenantId) {
+        this.tenantId = tenantId;
     }
 }
