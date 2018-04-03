@@ -27,12 +27,12 @@ public class DeviceHierarchyDataContainer implements Serializable {
 
     @ApiModelProperty(name = "tenantId", value = "Tenant used for enrolling device.",
             required = true)
-    private String tenantId;
+    private int tenantId;
 
     public DeviceHierarchyDataContainer() {
     }
 
-    public DeviceHierarchyDataContainer(String id, String deviceId, String parentId, int isParent, String tenantId) {
+    public DeviceHierarchyDataContainer(String id, String deviceId, String parentId, int isParent, int tenantId) {
         this.id = id;
         this.deviceId = deviceId;
         this.parentId = parentId;
@@ -72,11 +72,11 @@ public class DeviceHierarchyDataContainer implements Serializable {
         this.isParent = isParent;
     }
 
-    public String getTenantId() {
+    public int getTenantId() {
         return tenantId;
     }
 
-    public void setTenantId(String tenantId) {
+    public void setTenantId(int tenantId) {
         this.tenantId = tenantId;
     }
 }
