@@ -52,6 +52,14 @@ public class Device implements Serializable {
             required = true)
     private String deviceIdentifier;
 
+    @ApiModelProperty(name = "parentId", value = "This is the id of the parent the device is conencted to " +
+            "in the hierarchy", required = true)
+    private String parentId;
+
+    @ApiModelProperty(name = "isParent", value = "This is a flag to identify whether the device itself is a gateway",
+            required = true)
+    private int isParent;
+
     @ApiModelProperty(name = "enrolmentInfo", value = "This defines the device registration related information. " +
             "It is mandatory to define this information.", required = true)
     private EnrolmentInfo enrolmentInfo;
@@ -78,6 +86,18 @@ public class Device implements Serializable {
         this.type = type;
         this.description = description;
         this.deviceIdentifier = deviceId;
+        this.enrolmentInfo = enrolmentInfo;
+        this.features = features;
+        this.properties = properties;
+    }
+
+    public Device(String name, String type, String description, String deviceId, String parentId, int isParent, EnrolmentInfo enrolmentInfo, List<Feature> features, List<Property> properties) {
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.deviceIdentifier = deviceId;
+        this.parentId = parentId;
+        this.isParent = isParent;
         this.enrolmentInfo = enrolmentInfo;
         this.features = features;
         this.properties = properties;
@@ -121,6 +141,22 @@ public class Device implements Serializable {
 
     public void setDeviceIdentifier(String deviceIdentifier) {
         this.deviceIdentifier = deviceIdentifier;
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    public int getIsParent() {
+        return isParent;
+    }
+
+    public void setIsParent(int isParent) {
+        this.isParent = isParent;
     }
 
     public EnrolmentInfo getEnrolmentInfo() {
