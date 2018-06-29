@@ -47,6 +47,8 @@ public class TestDataHolder {
         device.setEnrolmentInfo(generateEnrollmentInfo(new Date().getTime(), new Date().getTime(), OWNER, EnrolmentInfo
                 .OwnerShip.BYOD, EnrolmentInfo.Status.CREATED));
         device.setDescription("Test Description");
+        device.setParentId("g0");
+        device.setIsParent(0);
         device.setDeviceIdentifier(initialDeviceIdentifier);
         device.setType(deviceType);
         return device;
